@@ -166,6 +166,8 @@ class Unnormalize(DataTransformFn):
         )
 
     def _unnormalize(self, x, stats: NormStats):
+        print('x',x)
+        print('stats',stats.mean)
         return x * (stats.std + 1e-6) + stats.mean
 
     def _unnormalize_quantile(self, x, stats: NormStats):

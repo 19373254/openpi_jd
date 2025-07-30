@@ -44,7 +44,8 @@ def initialize_checkpoint_dir(
             max_to_keep=1,
             keep_period=keep_period,
             create=False,
-            async_options=ocp.AsyncOptions(timeout_secs=7200),
+            # async_options=ocp.AsyncOptions(timeout_secs=7200),
+            enable_async_checkpointing=False
         ),
     )
 
@@ -74,11 +75,14 @@ def save_state(
     # Split params that can be used for inference into a separate item.
     with at.disable_typechecking():
         train_state, params = _split_params(state)
+    # import pdb
+    # pdb.set_trace()
     items = {
         "assets": save_assets,
         "train_state": train_state,
         "params": {"params": params},
     }
+    print(items['assets'])
     checkpoint_manager.save(step, items)
 
 
