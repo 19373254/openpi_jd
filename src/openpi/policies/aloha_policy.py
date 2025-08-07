@@ -94,7 +94,7 @@ class AlohaInputs(transforms.DataTransformFn):
 
 
 @dataclasses.dataclass(frozen=True)
-class AlohaOutputs(transforms.DataTransformFn):   
+class AlohaOutputs(transforms.DataTransformFn):      
     """Outputs for the Aloha policy."""
 
     # If true, this will convert the joint and gripper values from the standard Aloha space to
